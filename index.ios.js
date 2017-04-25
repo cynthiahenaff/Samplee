@@ -10,10 +10,21 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  TouchableOpacity,
 } from 'react-native';
 
+var Sound = require('react-native-sound');
+// import Sound from 'react-native-sound';
+
 export default class ProjectApp1 extends Component {
+  buttonGretchen() {
+    // alert('Grosse tête de Gretchen')
+    Sound.setCategory('Playback')
+    const sound = new Sound('miaouGretchen.wav', Sound.MAIN_BUNDLE, (error) => { if (error) { alert(JSON.stringify(error)) } })
+    sound.play((res) => alert(res))
+}
+
   render() {
     return (
       <View style={styles.container}>
@@ -21,16 +32,18 @@ export default class ProjectApp1 extends Component {
           flex: 1,
           flexDirection: 'row'
         }}>
-          <Image
-            source={require('./img/gretchen.jpg')}
-            style={{flex: 1, width: null, height: null}}
-            resizeMode="cover"
-          />
-          <Image
-            source={require('./img/baguette.jpg')}
-            style={{flex: 1, width: null, height: null}}
-          />
-        </View>
+          <TouchableOpacity onPress={this.buttonGretchen} style={{flex: 1}}>
+            <Image
+              source={require('./img/gretchen.jpg')}
+              style={{flex: 1, width: null, height: null}}
+              resizeMode="cover"
+            />
+          </TouchableOpacity>
+            <Image
+              source={require('./img/baguette.jpg')}
+              style={{flex: 1, width: null, height: null}}
+            />
+            </View>
         <View style={{
           flex: 1,
           flexDirection: 'row'
