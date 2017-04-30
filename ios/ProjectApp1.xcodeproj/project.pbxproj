@@ -37,7 +37,10 @@
 		39EAA8B8B38F4CB5930D9E06 /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E462146782640DBAE5C9E52 /* libRNSound.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		DCEAE5371EAFF64A00CB866B /* miaouGretchen.wav in Resources */ = {isa = PBXBuildFile; fileRef = DCEAE5361EAFF64A00CB866B /* miaouGretchen.wav */; };
+		DC8376131EB6798500EBECD4 /* miaulementGretchen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC8376121EB6798500EBECD4 /* miaulementGretchen.mp3 */; };
+		DC8376151EB684C200EBECD4 /* miaouHelga.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC8376141EB684C200EBECD4 /* miaouHelga.mp3 */; };
+		DC8376191EB6875300EBECD4 /* raspAdrien.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC8376181EB6875300EBECD4 /* raspAdrien.mp3 */; };
+		DC83761B1EB6891400EBECD4 /* fairyBell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC83761A1EB6891400EBECD4 /* fairyBell.mp3 */; };
 		DCECA3931EAFF24A00BF3590 /* react-native-sound in Resources */ = {isa = PBXBuildFile; fileRef = DCECA3921EAFF24A00BF3590 /* react-native-sound */; };
 /* End PBXBuildFile section */
 
@@ -267,7 +270,10 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7E462146782640DBAE5C9E52 /* libRNSound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSound.a; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		DCEAE5361EAFF64A00CB866B /* miaouGretchen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = miaouGretchen.wav; path = ../sounds/miaouGretchen.wav; sourceTree = "<group>"; };
+		DC8376121EB6798500EBECD4 /* miaulementGretchen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = miaulementGretchen.mp3; path = ../miaulementGretchen.mp3; sourceTree = "<group>"; };
+		DC8376141EB684C200EBECD4 /* miaouHelga.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = miaouHelga.mp3; path = ../miaouHelga.mp3; sourceTree = "<group>"; };
+		DC8376181EB6875300EBECD4 /* raspAdrien.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = raspAdrien.mp3; path = ../raspAdrien.mp3; sourceTree = "<group>"; };
+		DC83761A1EB6891400EBECD4 /* fairyBell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fairyBell.mp3; path = ../fairyBell.mp3; sourceTree = "<group>"; };
 		DCECA3921EAFF24A00BF3590 /* react-native-sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "react-native-sound"; path = "../node_modules/react-native-sound"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -404,6 +410,10 @@
 		13B07FAE1A68108700A75B9A /* ProjectApp1 */ = {
 			isa = PBXGroup;
 			children = (
+				DC83761A1EB6891400EBECD4 /* fairyBell.mp3 */,
+				DC8376181EB6875300EBECD4 /* raspAdrien.mp3 */,
+				DC8376141EB684C200EBECD4 /* miaouHelga.mp3 */,
+				DC8376121EB6798500EBECD4 /* miaulementGretchen.mp3 */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -480,7 +490,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				DCEAE5361EAFF64A00CB866B /* miaouGretchen.wav */,
 				13B07FAE1A68108700A75B9A /* ProjectApp1 */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ProjectApp1Tests */,
@@ -876,9 +885,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCEAE5371EAFF64A00CB866B /* miaouGretchen.wav in Resources */,
 				DCECA3931EAFF24A00BF3590 /* react-native-sound in Resources */,
+				DC8376131EB6798500EBECD4 /* miaulementGretchen.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				DC8376151EB684C200EBECD4 /* miaouHelga.mp3 in Resources */,
+				DC83761B1EB6891400EBECD4 /* fairyBell.mp3 in Resources */,
+				DC8376191EB6875300EBECD4 /* raspAdrien.mp3 in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
