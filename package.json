@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.4",
+    "react-native-modal-picker": "0.0.16",
     "react-native-sound": "^0.10.0"
   },
   "devDependencies": {

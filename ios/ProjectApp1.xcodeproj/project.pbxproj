@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -41,6 +40,7 @@
 		DC8376151EB684C200EBECD4 /* miaouHelga.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC8376141EB684C200EBECD4 /* miaouHelga.mp3 */; };
 		DC8376191EB6875300EBECD4 /* raspAdrien.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC8376181EB6875300EBECD4 /* raspAdrien.mp3 */; };
 		DC83761B1EB6891400EBECD4 /* fairyBell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC83761A1EB6891400EBECD4 /* fairyBell.mp3 */; };
+		DCA5C24D1EB7C6130083E6A9 /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCA5C24C1EB7C56F0083E6A9 /* libRCTCameraRoll.a */; };
 		DCECA3931EAFF24A00BF3590 /* react-native-sound in Resources */ = {isa = PBXBuildFile; fileRef = DCECA3921EAFF24A00BF3590 /* react-native-sound */; };
 /* End PBXBuildFile section */
 
@@ -234,6 +234,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		DCA5C24B1EB7C56F0083E6A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCA5C2471EB7C56F0083E6A9 /* RCTCameraRoll.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 58B5115D1A9E6B3D00147676;
+			remoteInfo = RCTCameraRoll;
+		};
 		DCECA3901EAFF1C700BF3590 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1D03BB66DE4D440E95D5D91A /* RNSound.xcodeproj */;
@@ -274,6 +281,7 @@
 		DC8376141EB684C200EBECD4 /* miaouHelga.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = miaouHelga.mp3; path = ../miaouHelga.mp3; sourceTree = "<group>"; };
 		DC8376181EB6875300EBECD4 /* raspAdrien.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = raspAdrien.mp3; path = ../raspAdrien.mp3; sourceTree = "<group>"; };
 		DC83761A1EB6891400EBECD4 /* fairyBell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fairyBell.mp3; path = ../fairyBell.mp3; sourceTree = "<group>"; };
+		DCA5C2471EB7C56F0083E6A9 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		DCECA3921EAFF24A00BF3590 /* react-native-sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "react-native-sound"; path = "../node_modules/react-native-sound"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -299,6 +307,7 @@
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
+				DCA5C24D1EB7C6130083E6A9 /* libRCTCameraRoll.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				39EAA8B8B38F4CB5930D9E06 /* libRNSound.a in Frameworks */,
@@ -462,6 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				DCECA3921EAFF24A00BF3590 /* react-native-sound */,
+				DCA5C2471EB7C56F0083E6A9 /* RCTCameraRoll.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -506,6 +516,14 @@
 				00E356EE1AD99517003FC87E /* ProjectApp1Tests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* ProjectApp1-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* ProjectApp1-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DCA5C2481EB7C56F0083E6A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DCA5C24C1EB7C56F0083E6A9 /* libRCTCameraRoll.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -606,6 +624,9 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = N3WQ4T3933;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -636,6 +657,10 @@
 				{
 					ProductGroup = 5E91572E1DD0AC6500FF2AA8 /* Products */;
 					ProjectRef = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
+				},
+				{
+					ProductGroup = DCA5C2481EB7C56F0083E6A9 /* Products */;
+					ProjectRef = DCA5C2471EB7C56F0083E6A9 /* RCTCameraRoll.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
@@ -864,6 +889,13 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		DCA5C24C1EB7C56F0083E6A9 /* libRCTCameraRoll.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTCameraRoll.a;
+			remoteRef = DCA5C24B1EB7C56F0083E6A9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		DCECA3911EAFF1C700BF3590 /* libRNSound.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1023,7 +1055,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1048,7 +1079,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1065,6 +1095,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = N3WQ4T3933;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
@@ -1086,6 +1117,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N3WQ4T3933;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
@@ -1122,7 +1154,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1156,7 +1187,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1185,7 +1215,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.ProjectApp1-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1210,7 +1239,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.ProjectApp1-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
