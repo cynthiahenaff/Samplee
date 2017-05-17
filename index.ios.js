@@ -21,6 +21,7 @@ import {
 
 import Sound from 'react-native-sound';
 import ModalPicker from 'react-native-modal-picker';
+import Icon from 'react-native-vector-icons/FontAwesome';
 // import Camera from 'react-native-camera';
 
 
@@ -52,14 +53,37 @@ export default class ProjectApp1 extends Component {
               flexDirection: 'row'
               }}
             >
-              <View style={{flex: 1}}>
-
-              <TouchableOpacity>
-                <Image
-                  source={require('./img/logoPhoto.png')}
-                  style={{width: 50, height:50}}
-                />
-              </TouchableOpacity>
+              <View style={{ flex: 1 }}>
+                <View>
+                  <TouchableOpacity>
+                    {/* <Image
+                      source={require('./img/logoPhoto.png')}
+                      style={{ width: 50, height:50 }}
+                    /> */}
+                    <Icon
+                      name="camera"
+                      size={30}
+                      color="black"
+                      style={{ margin: 10 }}
+                    />
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Icon
+                      name="picture-o"
+                      size={30}
+                      color="black"
+                      style={{ margin: 10 }}
+                    />
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Icon
+                      name="volume-up"
+                      size={30}
+                      color="black"
+                      style={{ margin: 10 }}
+                    />
+                  </TouchableOpacity>
+                </View>
               </View>
 
               <View style={{flex: 1}}>
