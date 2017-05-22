@@ -16,7 +16,8 @@ import {
   ImagePickerIOS,
   Modal,
   TouchableHighlight,
-  TextInput
+  TextInput,
+  StatusBar
 } from 'react-native';
 
 import Sound from 'react-native-sound';
@@ -31,7 +32,21 @@ export default class ProjectApp1 extends Component {
     super(props);
     this.state = {
       image: null
-    }
+    };
+    this.chooseImageFromGallery = this.chooseImageFromGallery.bind(this);
+    this.chooseImageFromGallery = this.chooseImageFromCamera.bind(this);
+  }
+
+  chooseImageFromGallery() {
+    ImagePickerIOS.openSelectDialog({}, imageUri => {
+      this.setState({image:imageUri});
+    }, error => console.error(error));
+  }
+
+  chooseImageFromCamera() {
+    ImagePickerIOS.openSelectDialog({}, imageUri => {
+      this.setState({image: imageUri});
+    }, error => console.error(error));
   }
 
   soundPlay(soundName) {
@@ -48,42 +63,44 @@ export default class ProjectApp1 extends Component {
     render() {
         return (
           <View style={styles.container}>
+            <StatusBar hidden={'true'} />
+
             <View style={{
               flex: 1,
               flexDirection: 'row'
               }}
             >
               <View style={{ flex: 1 }}>
-                <View>
-                  <TouchableOpacity>
-                    {/* <Image
-                      source={require('./img/logoPhoto.png')}
-                      style={{ width: 50, height:50 }}
-                    /> */}
-                    <Icon
-                      name="camera"
-                      size={30}
-                      color="black"
-                      style={{ margin: 10 }}
-                    />
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <Icon
-                      name="picture-o"
-                      size={30}
-                      color="black"
-                      style={{ margin: 10 }}
-                    />
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <Icon
-                      name="volume-up"
-                      size={30}
-                      color="black"
-                      style={{ margin: 10 }}
-                    />
-                  </TouchableOpacity>
-                </View>
+                {this.state.image?
+                  <Image style={styles.backGroundImage} source={{uri: this.state.image}}>
+                  </Image>:null}
+                  <View style={{ position: 'absolute'}}>
+                      <TouchableOpacity onPress={this.chooseImageFromCamera}>
+                        <Icon
+                          name="camera"
+                          size={30}
+                          color="black"
+                          style={{ margin: 10 }}
+                        />
+                      </TouchableOpacity>
+                      <TouchableOpacity onPress={this.chooseImageFromGallery}>
+                        <Icon
+                          name="picture-o"
+                          size={30}
+                          color="black"
+                          style={{ margin: 10 }}
+                        />
+                      </TouchableOpacity>
+                      <TouchableOpacity>
+                        <Icon
+                          name="volume-up"
+                          size={30}
+                          color="black"
+                          style={{ margin: 15 }}
+                        />
+                      </TouchableOpacity>
+                  </View>
+
               </View>
 
               <View style={{flex: 1}}>
@@ -121,13 +138,23 @@ export default class ProjectApp1 extends Component {
       }
     }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'transparent'
   },
+  backGroundImage: {
+    flex: 1,
+    width: undefined,
+    height: undefined,
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
+    alignItems: 'center'
+
+  }
 
 })
 
