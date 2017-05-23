@@ -8,16 +8,12 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  Text,
   View,
   Image,
   TouchableOpacity,
-  CameraRoll,
   ImagePickerIOS,
-  Modal,
-  TouchableHighlight,
-  TextInput,
-  StatusBar
+  StatusBar,
+  ActionSheetIOS
 } from 'react-native';
 
 import Sound from 'react-native-sound';
@@ -25,28 +21,42 @@ import ModalPicker from 'react-native-modal-picker';
 import Icon from 'react-native-vector-icons/FontAwesome';
 // import Camera from 'react-native-camera';
 
-
 export default class ProjectApp1 extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      image: null
+      image0: null,
+      image1: null,
+      image2: null,
+      image3: null
     };
     this.chooseImageFromGallery = this.chooseImageFromGallery.bind(this);
-    this.chooseImageFromGallery = this.chooseImageFromCamera.bind(this);
+    this.chooseImageFromCamera = this.chooseImageFromCamera.bind(this);
   }
 
-  chooseImageFromGallery() {
-    ImagePickerIOS.openSelectDialog({}, imageUri => {
-      this.setState({image:imageUri});
-    }, error => console.error(error));
+  chooseImageFromGallery(imageIndex) {
+    ImagePickerIOS.openSelectDialog(
+      {},
+      // Callback if it's ok
+      (imageUri) => {
+        this.setState({ ['image' + imageIndex]: imageUri });
+      },
+      // Callback if there is an error
+      (error) => {
+        console.log(error)
+      }
+    );
   }
 
   chooseImageFromCamera() {
-    ImagePickerIOS.openSelectDialog({}, imageUri => {
-      this.setState({image: imageUri});
-    }, error => console.error(error));
+    ImagePickerIOS.openCameraDialog(
+      {},
+      imageUri => {
+        this.setState({image:imageUri});
+      },
+      error => console.log(error)
+    );
   }
 
   soundPlay(soundName) {
@@ -60,83 +70,101 @@ export default class ProjectApp1 extends Component {
     })
   }
 
-    render() {
-        return (
-          <View style={styles.container}>
-            <StatusBar hidden={'true'} />
-
-            <View style={{
-              flex: 1,
-              flexDirection: 'row'
-              }}
-            >
-              <View style={{ flex: 1 }}>
-                {this.state.image?
-                  <Image style={styles.backGroundImage} source={{uri: this.state.image}}>
-                  </Image>:null}
-                  <View style={{ position: 'absolute'}}>
-                      <TouchableOpacity onPress={this.chooseImageFromCamera}>
-                        <Icon
-                          name="camera"
-                          size={30}
-                          color="black"
-                          style={{ margin: 10 }}
-                        />
-                      </TouchableOpacity>
-                      <TouchableOpacity onPress={this.chooseImageFromGallery}>
-                        <Icon
-                          name="picture-o"
-                          size={30}
-                          color="black"
-                          style={{ margin: 10 }}
-                        />
-                      </TouchableOpacity>
-                      <TouchableOpacity>
-                        <Icon
-                          name="volume-up"
-                          size={30}
-                          color="black"
-                          style={{ margin: 15 }}
-                        />
-                      </TouchableOpacity>
-                  </View>
-
-              </View>
-
-              <View style={{flex: 1}}>
-              <TouchableOpacity onPress={this.soundPlay.bind(this, 'fairyBell.mp3')} style={{flex: 1}}>
-                <Image
-                  source={require('./img/baguette.jpg')}
-                  style={{flex: 1, width: null, height: null}}
-                  resizeMode="cover"
-                />
-              </TouchableOpacity>
-              </View>
-            </View>
-            <View style={{
-              flex: 1,
-              flexDirection: 'row'
-              }}
-            >
-              <TouchableOpacity onPress={this.soundPlay.bind(this, 'raspAdrien.mp3')} style={{flex: 1}}>
-                <Image
-                  source={require('./img/petitNain.jpg')}
-                  style={{flex: 1, width: null, height: null}}
-                  resizeMode="cover"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={this.soundPlay.bind(this, 'miaouHelga.mp3')} style={{flex: 1}}>
-                <Image
-                  source={require('./img/helga.jpg')}
-                  style={{flex: 1, width: null, height: null}}
-                  resizeMode="cover"
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-        );
+  onLongPressImage(imageIndex) {
+    ActionSheetIOS.showActionSheetWithOptions(
+      {
+        options: [
+          'Change photo',
+          'Change music',
+          'Cancel',
+        ],
+        cancelButtonIndex: 2
+      },
+      (buttonIndex) => {
+        if (buttonIndex === 0) {
+          this.changeImage(imageIndex)
+        }
+        else if (buttonIndex === 1) {
+          console.log('Adrien veut changer de musique')
+        }
       }
-    }
+    )
+  }
+
+  changeImage(imageIndex) {
+    ActionSheetIOS.showActionSheetWithOptions(
+      {
+        options: [
+          'From Camera',
+          'From Library',
+          'Cancel',
+        ],
+        cancelButtonIndex: 2
+      },
+      (buttonIndex) => {
+        if (buttonIndex === 0) {
+          this.chooseImageFromCamera()
+        }
+        else if (buttonIndex === 1) {
+          this.chooseImageFromGallery(imageIndex)
+        }
+      }
+    )
+  }
+
+
+  renderImage(index) {
+    return (
+      <TouchableOpacity
+        delayLongPress={2000}
+        onLongPress={this.onLongPressImage.bind(this, index)}
+        style={{ flex: 1 }}
+      >
+        {
+          this.state['image' + index] ? <Image style={styles.backGroundImage} source={{uri: this.state['image' + index]}} /> : null
+        }
+      </TouchableOpacity>
+    );
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <StatusBar hidden />
+
+        <View style={{
+          flex: 1,
+          flexDirection: 'row'
+          }}
+        >
+          <View style={{ flex: 1 }}>
+            {this.renderImage(0)}
+          </View>
+
+          <View style={{flex: 1}}>
+            {this.renderImage(1)}
+          </View>
+        </View>
+
+        <View style={{
+          flex: 1,
+          flexDirection: 'row'
+          }}
+        >
+          <View style={{ flex: 1}}>
+            {this.renderImage(2)}
+          </View>
+          <View style={{ flex: 1}}>
+            {this.renderImage(3)}
+          </View>
+        </View>
+      </View>
+    );
+  }
+}
+
+
+
 
 
 const styles = StyleSheet.create({
