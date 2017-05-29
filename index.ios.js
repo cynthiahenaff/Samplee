@@ -49,11 +49,11 @@ export default class ProjectApp1 extends Component {
     );
   }
 
-  chooseImageFromCamera() {
+  chooseImageFromCamera(imageIndex) {
     ImagePickerIOS.openCameraDialog(
       {},
       imageUri => {
-        this.setState({image:imageUri});
+        this.setState({ ['image' + imageIndex] :imageUri});
       },
       error => console.log(error)
     );
@@ -103,7 +103,7 @@ export default class ProjectApp1 extends Component {
       },
       (buttonIndex) => {
         if (buttonIndex === 0) {
-          this.chooseImageFromCamera()
+          this.chooseImageFromCamera(imageIndex)
         }
         else if (buttonIndex === 1) {
           this.chooseImageFromGallery(imageIndex)
@@ -114,15 +114,26 @@ export default class ProjectApp1 extends Component {
 
 
   renderImage(index) {
+    let content
+    if (this.state['image' + index]) {
+      content = (<Image style={styles.backGroundImage} source={{uri: this.state['image' + index]}} />)
+    }
+    else {
+      content = (<Icon
+        name="plus-square-o"
+        size={40}
+        color="white"
+        style={{ margin: 10, position: 'absolute' }}
+      />)
+    }
+
     return (
       <TouchableOpacity
-        delayLongPress={2000}
+        delayLongPress={1000}
         onLongPress={this.onLongPressImage.bind(this, index)}
         style={{ flex: 1 }}
       >
-        {
-          this.state['image' + index] ? <Image style={styles.backGroundImage} source={{uri: this.state['image' + index]}} /> : null
-        }
+        {content}
       </TouchableOpacity>
     );
   }
@@ -137,11 +148,11 @@ export default class ProjectApp1 extends Component {
           flexDirection: 'row'
           }}
         >
-          <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, backgroundColor: '#FFB6C1'}}>
             {this.renderImage(0)}
           </View>
 
-          <View style={{flex: 1}}>
+          <View style={{flex: 1, backgroundColor: '#85C1E9'}}>
             {this.renderImage(1)}
           </View>
         </View>
@@ -151,10 +162,10 @@ export default class ProjectApp1 extends Component {
           flexDirection: 'row'
           }}
         >
-          <View style={{ flex: 1}}>
+          <View style={{ flex: 1, backgroundColor: '#45B39D'}}>
             {this.renderImage(2)}
           </View>
-          <View style={{ flex: 1}}>
+          <View style={{ flex: 1, backgroundColor: '#E67E22'}}>
             {this.renderImage(3)}
           </View>
         </View>
@@ -172,7 +183,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'transparent'
+    backgroundColor: 'grey'
   },
   backGroundImage: {
     flex: 1,
