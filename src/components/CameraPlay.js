@@ -9,9 +9,9 @@ import Video from 'react-native-video';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class CameraPlay extends Component {
-  static navigationOptions = {
-      header: null,
-    };
+  static navigatorStyle = {
+    navBarHidden: true
+  };
 
   constructor(props) {
     super(props);
@@ -21,22 +21,27 @@ export default class CameraPlay extends Component {
   }
 
   goToCameraRecord() {
-    const { navigate } = this.props.navigation;
-    navigate('CameraRecord', {});
+    this.props.navigator.pop({
+    animated: true,
+    animationType: 'fade',
+    });
   }
 
   goToHome() {
-    const { navigate } = this.props.navigation;
-    navigate('Home', {});
+    this.props.navigator.popToRoot({
+      animated: true, // does the popToRoot have transition animation or does it happen immediately (optional)
+      animationType: 'fade', // 'fade' (for both) / 'slide-horizontal' (for android) does the popToRoot have different transition animation (optional)
+    });
+  }
+
+  checkVideo() {
   }
 
   render() {
-    const { params } = this.props.navigation.state;
-
     return (
       <View style={styles.container}>
         <Video
-          source={{uri: params.videoPath}}   // Can be a URL or a local file.
+          source={{uri: this.props.videoPath}}   // Can be a URL or a local file.
           ref={(ref) => {
            this.player = ref
           }}                             // Store reference
@@ -64,10 +69,13 @@ export default class CameraPlay extends Component {
             color="white"
           />
         </TouchableOpacity>
-        <TouchableOpacity style={{ position: 'absolute', bottom: 10, right: 10, backgroundColor: 'transparent' }}>
+        <TouchableOpacity
+          style={{ position: 'absolute', bottom: 10, right: 10, backgroundColor: 'transparent' }}
+          onPress={this.checkVideo.bind(this)}
+        >
           <Icon
             name="check-circle-o"
-            size={60}
+            size={80}
             color="#D30547"
           />
         </TouchableOpacity>

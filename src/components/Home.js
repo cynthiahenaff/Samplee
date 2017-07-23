@@ -4,17 +4,15 @@ import {
   View,
   Image,
   TouchableOpacity,
-  // ImagePickerIOS,
   StatusBar,
-  ActionSheetIOS
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class Home extends Component {
-  static navigationOptions = {
-      header: null,
-    };
+  static navigatorStyle = {
+    navBarHidden: true
+  }
 
   constructor(props) {
     super(props);
@@ -28,8 +26,14 @@ export default class Home extends Component {
 
 
   onLongPressImage(imageIndex) {
-    const { navigate } = this.props.navigation;
-    navigate('CameraRecord', {});
+    this.props.navigator.push({
+      screen: 'CameraRecord',
+      passProps: {},
+      animated: true,
+      animationType: 'slide-horizontal',
+      navigatorStyle: {}, // override the navigator style for the pushed screen (optional)
+      navigatorButtons: {} // override the nav buttons for the pushed screen (optional)
+    });
 
     // ActionSheetIOS.showActionSheetWithOptions(
     //   {
@@ -86,11 +90,11 @@ export default class Home extends Component {
           flexDirection: 'row'
           }}
         >
-          <View style={{ flex: 1, backgroundColor: '#FFB6C1'}}>
+          <View style={{ flex: 1, backgroundColor: '#e85c5c'}}>
             {this.renderImage(0)}
           </View>
 
-          <View style={{flex: 1, backgroundColor: '#85C1E9'}}>
+          <View style={{flex: 1, backgroundColor: '#fdcc67'}}>
             {this.renderImage(1)}
           </View>
         </View>
@@ -100,10 +104,10 @@ export default class Home extends Component {
           flexDirection: 'row'
           }}
         >
-          <View style={{ flex: 1, backgroundColor: '#45B39D'}}>
+          <View style={{ flex: 1, backgroundColor: '#afeeee'}}>
             {this.renderImage(2)}
           </View>
-          <View style={{ flex: 1, backgroundColor: '#E67E22'}}>
+          <View style={{ flex: 1, backgroundColor: '#db7093'}}>
             {this.renderImage(3)}
           </View>
         </View>

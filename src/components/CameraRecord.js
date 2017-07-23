@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  // Alert,
   TouchableOpacity
 } from 'react-native';
 
@@ -10,9 +9,9 @@ import Rncamera from 'react-native-camera';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class CameraRecord extends Component {
-  static navigationOptions = {
-      header: null,
-    };
+  static navigatorStyle = {
+    navBarHidden: true
+  };
 
   constructor(props) {
     super(props);
@@ -28,10 +27,17 @@ export default class CameraRecord extends Component {
         this.setState({
           videoPath: data.path
         });
+        this.props.navigator.push({
+          screen: 'CameraPlay', // unique ID registered with Navigation.registerScreen
+          passProps: { videoPath: data.path }, // Object that will be passed as props to the pushed screen (optional)
+          animated: true, // does the push have transition animation or does it happen immediately (optional)
+          animationType: 'fade', // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
+          // backButtonTitle: undefined, // override the back button title (optional)
+          // backButtonHidden: false, // hide the back button altogether (optional)
+          // navigatorStyle: {}, // override the navigator style for the pushed screen (optional)
+          // navigatorButtons: {} // override the nav buttons for the pushed screen (optional)
+        });
 
-        console.log('================= 1');
-        const { navigate } = this.props.navigation;
-        navigate('CameraPlay', { videoPath: data.path });
         // { size: 5732169,
         //   path: '/private/var/mobile/Containers/Data/Application/08556194-E2B0-4B4C-9112-BDB81095A151/tmp/66917072-FF2F-4469-A764-7CA26EE8566B-3556-00000409690394D8.mov',
         //   width: 1080,
@@ -46,8 +52,10 @@ export default class CameraRecord extends Component {
   }
 
   goToHome() {
-    const { navigate } = this.props.navigation;
-    navigate('Home', {});
+    this.props.navigator.pop({
+      animated: true, // does the pop have transition animation or does it happen immediately (optional)
+      animationType: 'slide-horizontal', // 'fade' (for both) / 'slide-horizontal' (for android) does the pop have different transition animation (optional)
+    });
   }
 
   render() {
@@ -65,7 +73,6 @@ export default class CameraRecord extends Component {
           orientation="portrait"
         >
           <TouchableOpacity style={styles.button}
-            // onPress={this.takePicture.bind(this)}
             onPressIn={this.captureStart.bind(this)}
             onPressOut={this.captureStop.bind(this)}
           />
