@@ -8,7 +8,7 @@ import {
 import Rncamera from 'react-native-camera';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default class CameraRecord extends Component {
+class CameraRecord extends Component {
   static navigatorStyle = {
     navBarHidden: true
   };
@@ -115,4 +115,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     marginBottom: 20
   },
-})
+});
+
+
+export default CameraRecord;

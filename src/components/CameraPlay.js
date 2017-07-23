@@ -8,17 +8,14 @@ import {
 import Video from 'react-native-video';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default class CameraPlay extends Component {
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as appActions from '../redux/actions/app';
+
+class CameraPlay extends Component {
   static navigatorStyle = {
     navBarHidden: true
   };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      videoPath: null
-    };
-  }
 
   goToCameraRecord() {
     this.props.navigator.pop({
@@ -35,6 +32,9 @@ export default class CameraPlay extends Component {
   }
 
   checkVideo() {
+    console.log(this.props.videoPath);
+    this.props.appActions.videoSet0(this.props.videoPath);
+    this.goToHome();
   }
 
   render() {
@@ -93,4 +93,9 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
   }
-})
+});
+
+export default connect(
+  state => ({ app: state.app }),
+  dispatch => ({ appActions: bindActionCreators(appActions, dispatch) })
+)(CameraPlay);

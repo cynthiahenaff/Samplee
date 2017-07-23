@@ -7,23 +7,15 @@ import {
   StatusBar,
 } from 'react-native';
 
+import Video from 'react-native-video';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default class Home extends Component {
+import { connect } from 'react-redux';
+
+class Home extends Component {
   static navigatorStyle = {
     navBarHidden: true
   }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      image0: null,
-      image1: null,
-      image2: null,
-      image3: null
-    };
-  }
-
 
   onLongPressImage(imageIndex) {
     this.props.navigator.push({
@@ -57,8 +49,17 @@ export default class Home extends Component {
 
   renderImage(index) {
     let content
-    if (this.state['image' + index]) {
-      content = (<Image style={styles.backgroundImage} source={{uri: this.state['image' + index]}} />)
+    if (this.props.app['video' + index]) {
+      content = (
+        <Video
+          style={styles.container}
+          source={{uri: this.props.app['video' + index]}}
+          ref={(ref) => {
+           this.player = ref
+          }}
+          resizeMode="cover"
+        />
+      )
     }
     else {
       content = (<Icon
@@ -81,6 +82,8 @@ export default class Home extends Component {
   }
 
   render() {
+    console.log(this.props.app);
+
     return (
       <View style={styles.container}>
         <StatusBar hidden />
@@ -134,3 +137,7 @@ const styles = StyleSheet.create({
 
   }
 })
+
+export default connect(
+  state => ({ app: state.app })
+)(Home);

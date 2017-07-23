@@ -3,9 +3,15 @@ import Home from './src/components/Home';
 import CameraPlay from './src/components/CameraPlay';
 import CameraRecord from './src/components/CameraRecord';
 
-Navigation.registerComponent('Home', () => Home);
-Navigation.registerComponent('CameraRecord', () => CameraRecord);
-Navigation.registerComponent('CameraPlay', () => CameraPlay);
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import app from './src/redux/reducers/app';
+
+const store = createStore(combineReducers({ app }));
+
+Navigation.registerComponent('Home', () => Home, store, Provider);
+Navigation.registerComponent('CameraRecord', () => CameraRecord, store, Provider);
+Navigation.registerComponent('CameraPlay', () => CameraPlay, store, Provider);
 
 Navigation.startSingleScreenApp({
   screen:
