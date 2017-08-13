@@ -15,21 +15,16 @@ class CameraRecord extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      videoPath: null
-    };
+    this.state = {};
   }
 
   captureStart() {
     const options = {};
     this.camera.capture({metadata: options, totalSeconds: 10, path: true})
       .then((data) => {
-        this.setState({
-          videoPath: data.path
-        });
         this.props.navigator.push({
           screen: 'CameraPlay', // unique ID registered with Navigation.registerScreen
-          passProps: { videoPath: data.path }, // Object that will be passed as props to the pushed screen (optional)
+          passProps: { videoPath: data.path, imageIndex: this.props.imageIndex }, // Object that will be passed as props to the pushed screen (optional)
           animated: true, // does the push have transition animation or does it happen immediately (optional)
           animationType: 'fade', // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
           // backButtonTitle: undefined, // override the back button title (optional)

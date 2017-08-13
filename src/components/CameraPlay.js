@@ -32,8 +32,7 @@ class CameraPlay extends Component {
   }
 
   checkVideo() {
-    console.log(this.props.videoPath);
-    this.props.appActions.videoSet0(this.props.videoPath);
+    this.props.appActions.videoSet(this.props.videoPath, this.props.imageIndex);
     this.goToHome();
   }
 
@@ -46,7 +45,6 @@ class CameraPlay extends Component {
            this.player = ref
           }}                             // Store reference
           resizeMode="cover"             // Fill the whole screen at aspect ratio.
-          repeat                         // Repeat forever.
           style={styles.container}
         />
         <TouchableOpacity

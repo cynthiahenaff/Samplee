@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  Image,
   TouchableOpacity,
   StatusBar,
 } from 'react-native';
@@ -17,15 +16,29 @@ class Home extends Component {
     navBarHidden: true
   }
 
+  constructor(props) {
+    super(props);
+    this.state = { paused: true };
+  }
+
   onLongPressImage(imageIndex) {
     this.props.navigator.push({
       screen: 'CameraRecord',
-      passProps: {},
+      passProps: { imageIndex: imageIndex },
       animated: true,
       animationType: 'slide-horizontal',
       navigatorStyle: {}, // override the navigator style for the pushed screen (optional)
       navigatorButtons: {} // override the nav buttons for the pushed screen (optional)
-    });
+    })
+  }
+
+  onPressImage(imageIndex) {
+    if (this.props.app.videos[imageIndex] === null) {
+      return;
+    }
+    this.player.seek(0);
+    this.setState({ paused: false });
+  }
 
     // ActionSheetIOS.showActionSheetWithOptions(
     //   {
@@ -45,19 +58,20 @@ class Home extends Component {
     //     }
     //   }
     // )
-  }
 
-  renderImage(index) {
+
+  renderImage(imageIndex) {
     let content
-    if (this.props.app['video' + index]) {
+    if (this.props.app.videos[imageIndex]) {
       content = (
         <Video
           style={styles.container}
-          source={{uri: this.props.app['video' + index]}}
+          source={{uri: this.props.app.videos[imageIndex]}}
           ref={(ref) => {
            this.player = ref
           }}
           resizeMode="cover"
+          paused={this.state.paused}
         />
       )
     }
@@ -73,8 +87,9 @@ class Home extends Component {
     return (
       <TouchableOpacity
         delayLongPress={1000}
-        onLongPress={this.onLongPressImage.bind(this, index)}
+        onLongPress={this.onLongPressImage.bind(this, imageIndex)}
         style={{ flex: 1 }}
+        onPress={this.onPressImage.bind(this, imageIndex)}
       >
         {content}
       </TouchableOpacity>
@@ -97,7 +112,7 @@ class Home extends Component {
             {this.renderImage(0)}
           </View>
 
-          <View style={{flex: 1, backgroundColor: '#fdcc67'}}>
+          <View style={{flex: 1, backgroundColor: '#db7093'}}>
             {this.renderImage(1)}
           </View>
         </View>
@@ -107,10 +122,10 @@ class Home extends Component {
           flexDirection: 'row'
           }}
         >
-          <View style={{ flex: 1, backgroundColor: '#afeeee'}}>
+          <View style={{ flex: 1, backgroundColor: '#00897b'}}>
             {this.renderImage(2)}
           </View>
-          <View style={{ flex: 1, backgroundColor: '#db7093'}}>
+          <View style={{ flex: 1, backgroundColor: '#fdcc67'}}>
             {this.renderImage(3)}
           </View>
         </View>
