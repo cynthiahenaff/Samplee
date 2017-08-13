@@ -1,13 +1,12 @@
-package com.projectapp1;
+package com.sneep;
 
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.reactnativenavigation.NavigationReactPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
+import com.reactnativenavigation.NavigationReactPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
-import com.zmxv.RNSound.RNSoundPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -28,11 +27,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new NavigationReactPackage(),
             new ReactVideoPackage(),
             new VectorIconsPackage(),
-            new RCTCameraPackage(),
-            new RNSoundPackage()
+            new NavigationReactPackage(),
+            new RCTCameraPackage()
       );
     }
   };

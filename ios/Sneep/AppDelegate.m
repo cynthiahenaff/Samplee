@@ -10,13 +10,10 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
-
+#import <React/RCTRootView.h>
 
 // For react-native-navigation
 #import "RCCManager.h"
-
-
-#import <React/RCTRootView.h>
 
 @implementation AppDelegate
 
@@ -26,18 +23,14 @@
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 
-  
-  
-  // For react-native-navigation
+// For react-native-navigation
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   self.window.backgroundColor = [UIColor whiteColor];
   [[RCCManager sharedInstance] initBridgeWithBundleURL:jsCodeLocation launchOptions:launchOptions];
 
-  
-  
-// Original code from react-native, replaced by react-native-navigation
+  // Commented for react-native-navigation
 //  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-//                                                      moduleName:@"ProjectApp1"
+//                                                      moduleName:@"Sneep"
 //                                               initialProperties:nil
 //                                                   launchOptions:launchOptions];
 //  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
@@ -47,9 +40,6 @@
 //  rootViewController.view = rootView;
 //  self.window.rootViewController = rootViewController;
 //  [self.window makeKeyAndVisible];
-  
-  
-  
   return YES;
 }
 
