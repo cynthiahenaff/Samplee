@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -40,7 +40,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Les vidéos avec le son c'est mieux</string>
+	<string>Les vidéos avec le son c'est mieux 😊</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Cela te permet d'enregistrer des vidéos dans ta pellicule</string>
 	<key>UIAppFonts</key>

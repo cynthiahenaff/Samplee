@@ -5,9 +5,6 @@ import {
   StatusBar,
 } from 'react-native';
 
-import Video from 'react-native-video';
-import Icon from 'react-native-vector-icons/FontAwesome';
-
 import { connect } from 'react-redux';
 import Tile from './Tile';
 
@@ -32,11 +29,11 @@ class Home extends Component {
           flexDirection: 'row'
           }}
         >
-          <View style={{ flex: 1, backgroundColor: '#e85c5c'}}>
+          <View style={{ flex: 1, backgroundColor: '#e85c5c', borderBottomColor: 'white', borderBottomWidth: 1, borderRightColor: 'white', borderRightWidth: 1 }}>
             <Tile imageIndex={0} navigator={this.props.navigator} />
           </View>
 
-          <View style={{flex: 1, backgroundColor: '#db7093'}}>
+          <View style={{flex: 1, backgroundColor: '#db7093', borderBottomColor: 'white', borderBottomWidth: 1, borderLeftColor: 'white', borderLeftWidth: 1}}>
             <Tile imageIndex={1} navigator={this.props.navigator} />
           </View>
         </View>
@@ -46,10 +43,10 @@ class Home extends Component {
           flexDirection: 'row'
           }}
         >
-          <View style={{ flex: 1, backgroundColor: '#00897b'}}>
+          <View style={{ flex: 1, backgroundColor: '#00897b', borderTopColor: 'white', borderTopWidth: 1, borderRightColor: 'white', borderRightWidth: 1}}>
             <Tile imageIndex={2} navigator={this.props.navigator} />
           </View>
-          <View style={{ flex: 1, backgroundColor: '#fdcc67'}}>
+          <View style={{ flex: 1, backgroundColor: '#fdcc67', borderTopColor: 'white', borderTopWidth: 1, borderLeftColor: 'white', borderLeftWidth: 1}}>
             <Tile imageIndex={3} navigator={this.props.navigator} />
           </View>
         </View>

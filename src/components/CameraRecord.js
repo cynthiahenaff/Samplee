@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from 'react-native';
 
 import Rncamera from 'react-native-camera';
@@ -15,7 +16,9 @@ class CameraRecord extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      camera: {type: Rncamera.constants.Type.back }
+    };
   }
 
   captureStart() {
@@ -53,6 +56,23 @@ class CameraRecord extends Component {
     });
   }
 
+  switchCamera() {
+    let newType;
+    const { back, front } = Rncamera.constants.Type;
+
+    if (this.state.camera.type === back) {
+      newType = front;
+    } else if (this.state.camera.type === front) {
+      newType = back;
+    }
+    this.setState({
+      camera: {
+        ...this.state.camera,
+        type: newType,
+      },
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -76,9 +96,27 @@ class CameraRecord extends Component {
             onPress={this.goToHome.bind(this)}
           >
             <Icon
-              name="times"
+              name="close"
               size={30}
               color="white"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ position: 'absolute', top: 10, right: 10, backgroundColor: 'transparent' }}
+            onPress={this.switchCamera.bind(this)}
+          >
+            <Icon
+              name="camera"
+              style={{ position: 'absolute', top: 10, right: 10 }}
+              size={30}
+              color="white"
+            />
+            <Icon
+              name="refresh"
+              style={{ position: 'absolute', top: 17, right: 18 }}
+              size={19}
+              color="black"
+              position="absolute"
             />
           </TouchableOpacity>
         </Rncamera>
