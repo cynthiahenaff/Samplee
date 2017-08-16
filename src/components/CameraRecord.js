@@ -3,7 +3,6 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
-  Image
 } from 'react-native';
 
 import Rncamera from 'react-native-camera';
@@ -86,6 +85,7 @@ class CameraRecord extends Component {
           captureAudio
           captureTarget={Rncamera.constants.CaptureTarget.temp}
           orientation="portrait"
+          type={this.state.camera.type}
         >
           <TouchableOpacity style={styles.button}
             onPressIn={this.captureStart.bind(this)}
