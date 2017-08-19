@@ -16,8 +16,8 @@ class CameraRecord extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      camera: {type: Rncamera.constants.Type.back }
-    };
+      cameraType: Rncamera.constants.Type.back,
+      torchMode: Rncamera.constants.TorchMode.off}
   }
 
   captureStart() {
@@ -59,20 +59,73 @@ class CameraRecord extends Component {
     let newType;
     const { back, front } = Rncamera.constants.Type;
 
-    if (this.state.camera.type === back) {
+    if (this.state.cameraType === back) {
       newType = front;
-    } else if (this.state.camera.type === front) {
+    } else if (this.state.cameraType === front) {
       newType = back;
     }
-    this.setState({
-      camera: {
-        ...this.state.camera,
-        type: newType,
-      },
-    });
+    this.setState({ cameraType: newType });
   }
 
+  switchTorch = () => {
+      let newTorchMode;
+      const { on, off } = Rncamera.constants.TorchMode;
+
+      if (this.state.torchMode === on) {
+        newTorchMode = off;
+      }
+      else if (this.state.torchMode === off) {
+        newTorchMode = on;
+      }
+
+      this.setState({ torchMode: newTorchMode });
+    }
+
+
   render() {
+    let torch;
+    const {off, on } = Rncamera.constants.TorchMode;
+    console.log({ off, on })
+    console.log(this.state.torchMode)
+    if (this.state.torchMode === off) {
+      torch = (
+        <View>
+          <Icon
+            name="circle-o"
+            style={{ position: 'absolute', top: 10, right: 40 }}
+            size={32}
+            color="white"
+          />
+          <Icon
+            name="bolt"
+            style={{ position: 'absolute', top: 14, right: 48 }}
+            size={22}
+            color="white"
+            position="absolute"
+          />
+        </View>
+      )
+    }
+    else if (this.state.torchMode === on) {
+      torch = (
+        <View>
+          <Icon
+            name="circle"
+            style={{ position: 'absolute', top: 10, right: 40 }}
+            size={32}
+            color="white"
+          />
+          <Icon
+            name="bolt"
+            style={{ position: 'absolute', top: 14, right: 48 }}
+            size={22}
+            color="black"
+            position="absolute"
+          />
+        </View>
+      )
+    }
+
     return (
       <View style={styles.container}>
         <Rncamera
@@ -85,7 +138,8 @@ class CameraRecord extends Component {
           captureAudio
           captureTarget={Rncamera.constants.CaptureTarget.temp}
           orientation="portrait"
-          type={this.state.camera.type}
+          type={this.state.cameraType}
+          torchMode={this.state.torchMode}
         >
           <TouchableOpacity style={styles.button}
             onPressIn={this.captureStart.bind(this)}
@@ -112,12 +166,25 @@ class CameraRecord extends Component {
               color="white"
             />
             <Icon
+              name="circle"
+              style={{ position: 'absolute', top: 17, right: 18 }}
+              size={19}
+              color="white"
+              position="absolute"
+            />
+            <Icon
               name="refresh"
               style={{ position: 'absolute', top: 17, right: 18 }}
               size={19}
               color="black"
               position="absolute"
             />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ position: 'absolute', top: 10, right: 30, backgroundColor: 'transparent' }}
+            onPress={this.switchTorch.bind(this)}
+          >
+            {torch}
           </TouchableOpacity>
         </Rncamera>
       </View>
