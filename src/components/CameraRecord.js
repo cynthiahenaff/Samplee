@@ -140,6 +140,7 @@ class CameraRecord extends Component {
           orientation="portrait"
           type={this.state.cameraType}
           torchMode={this.state.torchMode}
+          mirrorImage={false}
         >
           <TouchableOpacity style={styles.button}
             onPressIn={this.captureStart.bind(this)}
