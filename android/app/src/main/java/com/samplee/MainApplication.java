@@ -1,4 +1,4 @@
-package com.sneep;
+package com.samplee;
 
 import android.app.Application;
 

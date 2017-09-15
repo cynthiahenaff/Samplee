@@ -87,7 +87,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.sneep"
+        applicationId "com.samplee"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
