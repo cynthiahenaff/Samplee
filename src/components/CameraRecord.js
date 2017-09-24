@@ -7,6 +7,7 @@ import {
 
 import Rncamera from 'react-native-camera';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import SvgUri from 'react-native-svg-uri';
 
 class CameraRecord extends Component {
   static navigatorStyle = {
@@ -85,23 +86,14 @@ class CameraRecord extends Component {
   render() {
     let torch;
     const {off, on } = Rncamera.constants.TorchMode;
-    console.log({ off, on })
-    console.log(this.state.torchMode)
     if (this.state.torchMode === off) {
       torch = (
         <View>
-          <Icon
-            name="circle-o"
-            style={{ position: 'absolute', top: 10, right: 40 }}
-            size={32}
-            color="white"
-          />
-          <Icon
-            name="bolt"
-            style={{ position: 'absolute', top: 14, right: 48 }}
-            size={22}
-            color="white"
-            position="absolute"
+          <SvgUri
+            source={require('../img/flashOff.svg')}
+            width={35}
+            height={35}
+            style={{ position: 'absolute', top: 10, right: 60}}
           />
         </View>
       )
@@ -109,22 +101,44 @@ class CameraRecord extends Component {
     else if (this.state.torchMode === on) {
       torch = (
         <View>
-          <Icon
-            name="circle"
-            style={{ position: 'absolute', top: 10, right: 40 }}
-            size={32}
-            color="white"
-          />
-          <Icon
-            name="bolt"
-            style={{ position: 'absolute', top: 14, right: 48 }}
-            size={22}
-            color="black"
-            position="absolute"
+          <SvgUri
+            source={require('../img/flashOn.svg')}
+            width={35}
+            height={35}
+            style={{ position: 'absolute', top: 10, right: 60}}
           />
         </View>
       )
     }
+
+    let camera;
+    const { back, front } = Rncamera.constants.Type;
+    if (this.state.cameraType === back) {
+      camera = (
+        <View>
+          <SvgUri
+            source={require('../img/cameraSwitch1.svg')}
+            width={35}
+            height={35}
+            style={{ position: 'absolute', top: 10, right: 10}}
+          />
+        </View>
+      )
+    }
+    if (this.state.cameraType === front) {
+      camera = (
+        <View>
+          <SvgUri
+            source={require('../img/cameraSwitch2.svg')}
+            width={35}
+            height={35}
+            style={{ position: 'absolute', top: 10, right: 10}}
+          />
+        </View>
+      )
+    }
+
+
 
     return (
       <View style={styles.container}>
@@ -150,36 +164,18 @@ class CameraRecord extends Component {
             style={{ position: 'absolute', top: 10, left: 10, backgroundColor: 'transparent' }}
             onPress={this.goToHome.bind(this)}
           >
-            <Icon
-              name="close"
-              size={30}
-              color="white"
+            <SvgUri
+              source={require('../img/close.svg')}
+              width={30}
+              height={30}
+              style={{ position: 'absolute', top: 10, left: 10 }}
             />
           </TouchableOpacity>
           <TouchableOpacity
             style={{ position: 'absolute', top: 10, right: 10, backgroundColor: 'transparent' }}
             onPress={this.switchCamera.bind(this)}
           >
-            <Icon
-              name="camera"
-              style={{ position: 'absolute', top: 10, right: 10 }}
-              size={30}
-              color="white"
-            />
-            <Icon
-              name="circle"
-              style={{ position: 'absolute', top: 17, right: 18 }}
-              size={19}
-              color="white"
-              position="absolute"
-            />
-            <Icon
-              name="refresh"
-              style={{ position: 'absolute', top: 17, right: 18 }}
-              size={19}
-              color="black"
-              position="absolute"
-            />
+            {camera}
           </TouchableOpacity>
           <TouchableOpacity
             style={{ position: 'absolute', top: 10, right: 30, backgroundColor: 'transparent' }}

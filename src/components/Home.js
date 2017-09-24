@@ -7,6 +7,10 @@ import {
 
 import { connect } from 'react-redux';
 import Tile from './Tile';
+import Onboarding from './Onboarding';
+import Dot from './Dot';
+import DotContainer from './DotContainer';
+
 
 class Home extends Component {
   static navigatorStyle = {
@@ -19,6 +23,10 @@ class Home extends Component {
 
   render() {
     console.log(this.props.app);
+
+    // return (
+    //   // <Onboarding\ />
+    // );
 
     return (
       <View style={styles.container}>
