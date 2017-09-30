@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 
 import Rncamera from 'react-native-camera';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import SvgUri from 'react-native-svg-uri';
 
 class CameraRecord extends Component {

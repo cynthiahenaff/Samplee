@@ -14,10 +14,10 @@ class DotContainer extends Component {
     let dots = [];
     for (let i = 0; i < this.props.count; i = i + 1) {
       if (this.props.indexActivated === i) {
-        dots.push(<Dot activated />)
+        dots.push(<Dot activated key={i} />)
       }
       else {
-        dots.push(<Dot/>)
+        dots.push(<Dot key={i} />)
       }
     }
     return dots

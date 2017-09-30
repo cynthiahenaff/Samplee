@@ -7,6 +7,8 @@ import {
 
 import Video from 'react-native-video';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import SvgUri from 'react-native-svg-uri';
+
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -71,10 +73,11 @@ class CameraPlay extends Component {
           style={{ position: 'absolute', bottom: 10, right: 10, backgroundColor: 'transparent' }}
           onPress={this.checkVideo.bind(this)}
         >
-          <Icon
-            name="check-circle-o"
-            size={80}
-            color="#D30547"
+          <SvgUri
+            source={require('../img/check.svg')}
+            width={70}
+            height={70}
+            // style={{ position: 'absolute', top: 10, left: 10 }}
           />
         </TouchableOpacity>
       </View>

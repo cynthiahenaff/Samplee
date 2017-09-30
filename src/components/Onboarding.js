@@ -21,6 +21,19 @@ class Onboarding extends Component {
     navBarHidden: true
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      dotIndexActivated: 0
+    };
+  }
+
+  onScroll(event) {
+    this.setState({
+      dotIndexActivated: Math.round(event.nativeEvent.contentOffset.x / windowWidth)
+    });
+  }
+
   render() {
     return (
       <View>
@@ -28,6 +41,9 @@ class Onboarding extends Component {
           horizontal
           style={{ height: '100%', backgroundColor: 'grey' }}
           pagingEnabled
+          onScroll={this.onScroll.bind(this)}
+          scrollEventThrottle={100} // en ms
+          showsHorizontalScrollIndicator={false}
         >
 
           {/* One */}
@@ -104,8 +120,9 @@ class Onboarding extends Component {
 
         <DotContainer
           count={3}
-          indexActivated={1}
-          style={{ position: 'absolute', width: windowWidth, justifyContent: 'center', bottom: 97 }}/>
+          indexActivated={this.state.dotIndexActivated}
+          style={{ position: 'absolute', width: windowWidth, justifyContent: 'center', bottom: 97 }}
+        />
       </View>
     );
   }

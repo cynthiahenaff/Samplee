@@ -24,9 +24,9 @@ class Home extends Component {
   render() {
     console.log(this.props.app);
 
-    // return (
-    //   // <Onboarding\ />
-    // );
+    return (
+      <Onboarding />
+    );
 
     return (
       <View style={styles.container}>
@@ -37,11 +37,11 @@ class Home extends Component {
           flexDirection: 'row'
           }}
         >
-          <View style={{ flex: 1, backgroundColor: '#e85c5c', borderBottomColor: 'white', borderBottomWidth: 1, borderRightColor: 'white', borderRightWidth: 1 }}>
+          <View style={{ flex: 1, backgroundColor: '#7ED321', borderBottomColor: 'white', borderBottomWidth: 1, borderRightColor: 'white', borderRightWidth: 1 }}>
             <Tile imageIndex={0} navigator={this.props.navigator} />
           </View>
 
-          <View style={{flex: 1, backgroundColor: '#db7093', borderBottomColor: 'white', borderBottomWidth: 1, borderLeftColor: 'white', borderLeftWidth: 1}}>
+          <View style={{flex: 1, backgroundColor: '#4A90E2', borderBottomColor: 'white', borderBottomWidth: 1, borderLeftColor: 'white', borderLeftWidth: 1}}>
             <Tile imageIndex={1} navigator={this.props.navigator} />
           </View>
         </View>
@@ -51,10 +51,10 @@ class Home extends Component {
           flexDirection: 'row'
           }}
         >
-          <View style={{ flex: 1, backgroundColor: '#00897b', borderTopColor: 'white', borderTopWidth: 1, borderRightColor: 'white', borderRightWidth: 1}}>
+          <View style={{ flex: 1, backgroundColor: '#F5A623', borderTopColor: 'white', borderTopWidth: 1, borderRightColor: 'white', borderRightWidth: 1}}>
             <Tile imageIndex={2} navigator={this.props.navigator} />
           </View>
-          <View style={{ flex: 1, backgroundColor: '#fdcc67', borderTopColor: 'white', borderTopWidth: 1, borderLeftColor: 'white', borderLeftWidth: 1}}>
+          <View style={{ flex: 1, backgroundColor: '#D0021B', borderTopColor: 'white', borderTopWidth: 1, borderLeftColor: 'white', borderLeftWidth: 1}}>
             <Tile imageIndex={3} navigator={this.props.navigator} />
           </View>
         </View>
