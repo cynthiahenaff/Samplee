@@ -4,7 +4,8 @@ import {
   View,
   ScrollView,
   Dimensions,
-  Text
+  Text,
+  TouchableOpacity
 } from 'react-native';
 import SvgUri from 'react-native-svg-uri';
 
@@ -103,7 +104,10 @@ class Onboarding extends Component {
                 Et amuse toi !
               </Text>
             </View>
-            <View style={{ flex:1, alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40}}>
+            <TouchableOpacity
+              style={{ flex:1, alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40}}
+              onPress={this.props.onValidated}
+            >
               <View
                 style={styles.button}
               >
@@ -114,7 +118,7 @@ class Onboarding extends Component {
                 </Text>
 
               </View>
-            </View>
+            </TouchableOpacity>
           </View>
         </ScrollView>
 

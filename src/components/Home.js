@@ -25,10 +25,6 @@ class Home extends Component {
     console.log(this.props.app);
 
     return (
-      <Onboarding />
-    );
-
-    return (
       <View style={styles.container}>
         <StatusBar hidden />
 
