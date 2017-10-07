@@ -16,17 +16,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      onboardingValidated: false
+      onboardingValidated: false,
+      loading: true
     };
   }
 
   componentWillMount() {
     AsyncStorage.getItem('onboardingValidated', (err, result) => {
       if (result === 'true') {
-        this.setState({ onboardingValidated : true});
+        this.setState({ onboardingValidated : true, loading : false });
       }
       else {
-        this.setState({ onboardingValidated : false });
+        this.setState({ onboardingValidated : false, loading : false });
       }
     });
   }
@@ -39,6 +40,10 @@ class App extends Component {
   render() {
     console.log(this.state.onboardingValidated);
 
+    if (this.state.loading === true) {
+      return null;
+    }
+
     if (this.state.onboardingValidated === false) {
       return (
         <Onboarding onValidated={this.onboardingValidated.bind(this)} />
@@ -46,7 +51,7 @@ class App extends Component {
     }
     else if (this.state.onboardingValidated === true) {
       return (
-        <Home />
+        <Home navigator={this.props.navigator} />
       );
     }
   }
