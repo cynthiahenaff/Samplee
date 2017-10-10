@@ -45,6 +45,7 @@ class Onboarding extends Component {
           onScroll={this.onScroll.bind(this)}
           scrollEventThrottle={100} // en ms
           showsHorizontalScrollIndicator={false}
+          bounces={false}
         >
 
           {/* One */}

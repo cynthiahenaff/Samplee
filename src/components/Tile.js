@@ -41,7 +41,7 @@ class Tile extends Component {
 
   render() {
     const imageIndex = this.props.imageIndex;
-    
+
     let content;
     if (this.props.app.videos[imageIndex]) {
       content = (
@@ -53,6 +53,8 @@ class Tile extends Component {
           }}
           resizeMode="cover"
           paused={this.state.paused}
+          playInBackground={false}
+          playWhenInactive={false}
         />
       )
     }

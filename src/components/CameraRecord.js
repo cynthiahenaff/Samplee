@@ -17,35 +17,29 @@ class CameraRecord extends Component {
     super(props);
     this.state = {
       cameraType: Rncamera.constants.Type.back,
-      torchMode: Rncamera.constants.TorchMode.off}
+      torchMode: Rncamera.constants.TorchMode.off,
+      buttonRecord: false
+    };
   }
 
   captureStart() {
     const options = {};
-    this.camera.capture({metadata: options, totalSeconds: 10, path: true})
+    this.camera.capture({metadata: options, totalSeconds: 6, path: true})
       .then((data) => {
         this.props.navigator.push({
-          screen: 'CameraPlay', // unique ID registered with Navigation.registerScreen
+          screen: 'CameraPlay',
           passProps: { videoPath: data.path, imageIndex: this.props.imageIndex }, // Object that will be passed as props to the pushed screen (optional)
-          animated: true, // does the push have transition animation or does it happen immediately (optional)
-          animationType: 'fade', // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
-          // backButtonTitle: undefined, // override the back button title (optional)
-          // backButtonHidden: false, // hide the back button altogether (optional)
-          // navigatorStyle: {}, // override the navigator style for the pushed screen (optional)
-          // navigatorButtons: {} // override the nav buttons for the pushed screen (optional)
+          animated: true,
+          animationType: 'fade',
         });
-
-        // { size: 5732169,
-        //   path: '/private/var/mobile/Containers/Data/Application/08556194-E2B0-4B4C-9112-BDB81095A151/tmp/66917072-FF2F-4469-A764-7CA26EE8566B-3556-00000409690394D8.mov',
-        //   width: 1080,
-        //   height: 1920,
-        //   duration: 2.6683332920074463 }
       })
       .catch(err => console.error(err));
+    this.setState({ buttonRecord: true })
   }
 
   captureStop() {
     this.camera.stopCapture();
+    this.setState({ buttonRecord: false })
   }
 
   goToHome() {
@@ -67,7 +61,7 @@ class CameraRecord extends Component {
     this.setState({ cameraType: newType });
   }
 
-  switchTorch = () => {
+  switchTorch() {
       let newTorchMode;
       const { on, off } = Rncamera.constants.TorchMode;
 
@@ -137,7 +131,10 @@ class CameraRecord extends Component {
       )
     }
 
-
+  let styleButton = styles.button;
+  if (this.state.buttonRecord === true) {
+    styleButton = styles.buttonPressed
+  }
 
     return (
       <View style={styles.container}>
@@ -155,10 +152,13 @@ class CameraRecord extends Component {
           torchMode={this.state.torchMode}
           mirrorImage={false}
         >
-          <TouchableOpacity style={styles.button}
+          {/* Button Record */}
+          <TouchableOpacity style={styleButton}
+            activeOpacity={1}
             onPressIn={this.captureStart.bind(this)}
             onPressOut={this.captureStop.bind(this)}
           />
+          {/* Button close */}
           <TouchableOpacity
             style={{ position: 'absolute', top: 10, left: 10, backgroundColor: 'transparent' }}
             onPress={this.goToHome.bind(this)}
@@ -170,14 +170,16 @@ class CameraRecord extends Component {
               style={{ position: 'absolute', top: 10, left: 10 }}
             />
           </TouchableOpacity>
+          {/* Button switchCamera */}
           <TouchableOpacity
-            style={{ position: 'absolute', top: 10, right: 10, backgroundColor: 'transparent' }}
+            style={{ position: 'absolute', top: 10, right: 10 }}
             onPress={this.switchCamera.bind(this)}
           >
             {camera}
           </TouchableOpacity>
+          {/* Button switchTorch */}
           <TouchableOpacity
-            style={{ position: 'absolute', top: 10, right: 30, backgroundColor: 'transparent' }}
+            style={styles.icon, { position: 'absolute', top: 10, right: 30, backgroundColor: 'transparent' }}
             onPress={this.switchTorch.bind(this)}
           >
             {torch}
@@ -211,6 +213,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     marginBottom: 20
   },
+  buttonPressed: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    borderWidth: 4,
+    borderColor: '#fff',
+    backgroundColor: '#b5213e',
+    marginBottom: 20
+  },
+  icon: {
+    backgroundColor: 'transparent',
+  }
 });
 
 

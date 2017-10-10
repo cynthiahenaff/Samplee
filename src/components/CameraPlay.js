@@ -49,16 +49,19 @@ class CameraPlay extends Component {
           resizeMode="cover"             // Fill the whole screen at aspect ratio.
           style={styles.container}
         />
+        {/* Close button */}
         <TouchableOpacity
           style={{ position: 'absolute', top: 10, left: 10, backgroundColor: 'transparent' }}
           onPress={this.goToHome.bind(this)}
         >
-          <Icon
-            name="times"
-            size={30}
-            color="white"
+          <SvgUri
+            source={require('../img/close.svg')}
+            width={30}
+            height={30}
+            style={{ position: 'absolute', top: 10, left: 10 }}
           />
         </TouchableOpacity>
+        {/* Repeat button */}
         <TouchableOpacity
           style={{ position: 'absolute', bottom: 10, left: 10, backgroundColor: 'transparent' }}
           onPress={this.goToCameraRecord.bind(this)}
@@ -69,15 +72,15 @@ class CameraPlay extends Component {
             color="white"
           />
         </TouchableOpacity>
+        {/* Next button */}
         <TouchableOpacity
-          style={{ position: 'absolute', bottom: 10, right: 10, backgroundColor: 'transparent' }}
+          style={{ position: 'absolute', bottom: 10, right: 10 }}
           onPress={this.checkVideo.bind(this)}
         >
           <SvgUri
-            source={require('../img/check.svg')}
-            width={70}
-            height={70}
-            // style={{ position: 'absolute', top: 10, left: 10 }}
+            source={require('../img/next.svg')}
+            width={55}
+            height={55}
           />
         </TouchableOpacity>
       </View>
