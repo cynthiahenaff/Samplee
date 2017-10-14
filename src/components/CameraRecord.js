@@ -205,18 +205,18 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   button: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
     borderWidth: 4,
     borderColor: '#fff',
     backgroundColor: 'transparent',
     marginBottom: 20
   },
   buttonPressed: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
     borderWidth: 4,
     borderColor: '#fff',
     backgroundColor: '#b5213e',
