@@ -38,9 +38,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Cela te permet de filmer</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Les vidéos avec le son c'est mieux 😊</string>
+	<string>Les vidéos avec le son c'est mieux</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Cela te permet d'enregistrer des vidéos dans ta pellicule</string>
 	<key>UIAppFonts</key>

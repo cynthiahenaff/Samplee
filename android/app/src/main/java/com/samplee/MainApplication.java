@@ -35,6 +35,11 @@ public class MainApplication extends Application implements ReactApplication {
             new RCTCameraPackage()
       );
     }
+
+    @Override
+    protected String getJSMainModuleName() {
+      return "index";
+    }
   };
 
   @Override
